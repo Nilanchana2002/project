@@ -3,47 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Consonant Count</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: left;
-        margin: 50px;
-      }
-
-      input {
-        padding: 6px;
-        margin-right: 10px;
-      }
-
-      button {
-        padding: 8px 15px;
-        cursor: pointer;
-        color: white;
-        background-color: blue;
-      }
-    </style>
+    <title>Product</title>
   </head>
   <body>
-    <label for="inputtext">Enter the text</label><br />
-    <input type="text" id="inputtext" /><br /><br />
-    <button onclick="countConsonants()">ok</button>
+    <div class="product" data-id="1" data-price="100">
+      <h2>Product 1</h2>
+      <p>Price :30</p>
+      <button onclick="displayproduct(1)">Ok</button>
+    </div>
+    <div class="product" data-id="2" data-price="300">
+      <h2>Product 2</h2>
+      <p>Price:46</p>
+      <button onclick="displayproduct(2)">Ok</button>
+    </div>
+    <div class="product" data-id="3" data-price="400">
+      <h2>Product 3</h2>
+      <p>Price:10</p>
+      <button onclick="displayproduct(3)">Ok</button>
+    </div>
 
     <script>
-      const countConsonants = () => {
-        const inputText = document
-          .getElementById("inputtext")
-          .value.toLowerCase();
-        const consonants = inputText.replace("aeiou");
-
-        if (!consonants) {
-          alert("No Consonants");
-        } else if (consonants.length === 7) {
-          alert(`Number of consonants: 7`);
-        } else {
-          alert(`Number of consonants: ${consonants.length}`);
-        }
-      };
+      function displayproduct(productId) {
+        const product = document.querySelector(
+          `.product[data-id="${productId}"]`
+        );
+        const productName = product.querySelector("h2").textContent;
+        const productPrice = product.getAttribute("data-price");
+        alert(
+          `Product "${productName}" added to cart.Price:Rs.${productPrice}`
+        );
+      }
     </script>
   </body>
 </html>
